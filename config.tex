@@ -7,7 +7,7 @@
 
 % ---- Bibliographie ---------
 \usepackage{natbib} 
-
+% \addbibresource{bibliographie.bib}
 
 % ------- Français -----------	
 \usepackage[francais]{babel}
@@ -24,7 +24,7 @@
 \usepackage{ae,aecompl}
 \usepackage{enumitem}
 \usepackage{scalerel}
-
+\usepackage{textcomp}
 
 
 
@@ -65,9 +65,6 @@
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0.4pt}
 
-\graphicspath{graphics/}
-
-
 
 
 
@@ -76,23 +73,26 @@
 \usepackage{amsmath}
 \usepackage{systeme}
 \usepackage{amsfonts}
+\usepackage{mathabx}
 
-
-
-
-% --------------------------------	
-% Définit une commande permettant d'insérer: une image, son échelle, et une légende.
-\newcommand{\image}[3]{
-    \begin{figure}[h]
-                  
-	\hfill\includegraphics[width=#2\textwidth]{graphics/#1}\hspace*{\fill}
-           
-	\caption{ \small{#3} }
- 	\end{figure}  }
-    
-    
-    
-    
+% Vector column type
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+   
 % --------------------------------	
 % customisation des puces de liste
 \renewcommand{\labelitemi}{$\cdot$}
