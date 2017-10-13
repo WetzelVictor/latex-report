@@ -22,7 +22,7 @@
         captionpos=b,
         literate={é}{{\'e}}1 {è}{{\`e}}1 {ê}{{\^e}}1
 	}
-\title{}
+\maketitle
 
 \input{title.tex}
 % Remove page numbers (and reset to 1)
